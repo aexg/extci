@@ -8,9 +8,9 @@ jobs:
       - checkout
 
       - run:
-          name: Greeting
-          command: echo Hello, world.
+          name: Install build tools
+          command: 'apt-get update && apt-get install -y gcc g++'
 
       - run:
-          name: Print the Current Time
-          command: date
+          name: Build with g++
+          command: 'g++ hwcpp/hellowolrd.cc -o helloworld'
