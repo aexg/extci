@@ -9,8 +9,17 @@ jobs:
 
       - run:
           name: Install build tools
-          command: 'apt-get update && apt-get install -y gcc g++ && gcc --version'
+          command: 'apt-get update && apt-get install -y gcc g++ cmake'
 
       - run:
-          name: Build with g++
-          command: 'g++ hwcpp/hellowolrd.cc -o helloworld'
+          name: Build with CMake
+          command: |
+            cd hwcpp
+            mkdir build
+            cd build
+            cmake ..
+            make
+
+        - run:
+          name: Run the application
+          command: ./hwcpp/build/helloworld
