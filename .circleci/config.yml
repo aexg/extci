@@ -10,25 +10,16 @@ jobs:
       - run:
           name: Check clang-format version
           command: |
-            apt-get update
+            echo "lsb_release"
             set +e
-            apt-get install -y clang-format
+            lsb_release -a
+            echo "hostnamectl"
             set +e
-            clang-format --version
-            set +e
-            clang-format-3.8 --version
-
-      - run:
-          name: Check clang version
-          command: |
-            apt-get update
-            apt-get install -y clang
-            set +e
-            clang --version
+            hostnamectl
 
       - run:
           name: Install build tools
-          command: 'apt-get update && apt-get install -y gcc g++'
+          command: 'apt-get update && apt-get install -y gcc g++ && gcc --version'
 
       - run:
           name: Build with g++
