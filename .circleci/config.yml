@@ -8,16 +8,23 @@ jobs:
       - checkout
 
       - run:
-          name: Check system version
-          command: 'uname -a'
-
-      - run:
-          name: Check cmake version
-          command: 'apt-get update && apt-get install -y cmake && cmake --version'
+          name: Check clang-format version
+          command: |
+            apt-get update
+            set +e
+            apt-get install -y clang-format
+            set +e
+            clang-format --version
+            set +e
+            clang-format-3.8 --version
 
       - run:
           name: Check clang version
-          command: 'apt-get update && apt-get install -y clang && clang-format --version'
+          command: |
+            apt-get update
+            apt-get install -y clang
+            set +e
+            clang --version
 
       - run:
           name: Install build tools
