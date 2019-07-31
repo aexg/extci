@@ -8,16 +8,6 @@ jobs:
       - checkout
 
       - run:
-          name: Check clang-format version
-          command: |
-            echo "lsb_release"
-            set +e
-            lsb_release -a
-            echo "hostnamectl"
-            set +e
-            hostnamectl
-
-      - run:
           name: Install build tools
           command: 'apt-get update && apt-get install -y gcc g++ && gcc --version'
 
