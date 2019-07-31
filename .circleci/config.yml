@@ -20,6 +20,6 @@ jobs:
             cmake ..
             make
 
-        - run:
+      - run:
           name: Run the application
           command: ./hwcpp/build/helloworld
